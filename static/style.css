@@ -1,0 +1,19 @@
+body {
+  text-align: center;
+  margin-bottom: 1.5em;
+}
+
+h1 {
+    color: orange;
+}
+
+.xkcd_result {
+  font: bold 1.5em "Courier New", Courier, monospace;
+  margin-bottom: 0.8em;
+  color: #000066;
+}
+
+.xkcd_result_len {
+  font: 1.0em "Courier New", Courier, monospace;
+}
+

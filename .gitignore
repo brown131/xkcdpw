@@ -1,0 +1,10 @@
+*~
+#*
+.#*
+
+
+.psc-ide-port
+.psci_modules/
+.DS_Store
+output/
+.spago/
