@@ -1,5 +1,5 @@
 {
-	"name": "xkcd",
+	"name": "xkcdpw",
 	"build": {
 		"dockerfile": "Dockerfile",
 		// Update 'VARIANT' to pick an Debian version: buster, stretch
