@@ -16,7 +16,7 @@ RUN wget -qO- https://get.haskellstack.org/ | sh
 
 # Install global node modules
 RUN sudo npm install -g npm
-RUN sudo npm install -g purescript spago parcel-bundler --unsafe-perm=true
+RUN sudo npm install -g purescript spago parcel-bundler esbuild --unsafe-perm=true
 RUN sudo npm install -g bootstrap-icons
 
 # Install Docker

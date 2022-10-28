@@ -2,7 +2,7 @@ module Component (component) where
 
 import Prelude
 
-import Affjax as AX
+import Affjax.Web as AX
 import Affjax.ResponseFormat as AXRF
 import Data.Array (length, take, (!!))
 import Data.Either (Either(..))
@@ -15,14 +15,13 @@ import Halogen as H
 import Halogen.HTML as HH
 import Halogen.HTML.Events as HE
 import Halogen.HTML.Properties as HP
-import Web.UIEvent.MouseEvent (MouseEvent)
 import WordList (wordList)
 
 type State = { password :: String }
 
-data Action = Initialize | GeneratePassword MouseEvent
+data Action = Initialize | GeneratePassword
 
-component :: ∀ f i o m. MonadAff m => H.Component HH.HTML f i o m
+component :: ∀ f i o m. MonadAff m => H.Component f i o m
 component =
   H.mkComponent
     { initialState
@@ -44,10 +43,10 @@ render state =
          [ HH.text state.password ]
        , HH.p
          [ HP.class_ $ HH.ClassName "xkcd_result_len" ]
-         [ HH.span [ HP.id_ "xkcd_pw_result_len" ] [ HH.text $ show $ (S.length state.password) - 3 ]
+         [ HH.span [ HP.id "xkcd_pw_result_len" ] [ HH.text $ show $ (S.length state.password) - 3 ]
          , HH.text " characters"
          ]
-        , HH.button [ HP.type_ HP.ButtonSubmit, HE.onClick $ Just <<< GeneratePassword ]
+        , HH.button [ HP.type_ HP.ButtonSubmit, HE.onClick \_ -> GeneratePassword ]
         [ HH.text "Generate Another!" ] ] ]
 
 randomToWord :: String -> String
@@ -68,6 +67,6 @@ handleAction = case _ of
   Initialize -> do
     randoms <- generatePassword
     H.put { password: randoms }
-  GeneratePassword me -> do
+  GeneratePassword -> do
     randoms <- generatePassword
     H.put { password: randoms }
