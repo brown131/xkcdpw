@@ -52,6 +52,8 @@ render state =
 randomToWord :: String -> String
 randomToWord r = fromMaybe "" $ wordList !! (fromMaybe 0 $ fromString r)
 
+-- 0123456789 !@#$%^&*(){}[]
+
 generatePassword :: ∀ m. MonadAff m => m String
 generatePassword = do
     let url = "https://www.random.org/integers/?num=4&min=0&max=" <> (toStringAs decimal $ length wordList) <>

@@ -18,9 +18,3 @@ RUN wget -qO- https://get.haskellstack.org/ | sh
 RUN sudo npm install -g npm
 RUN sudo npm install -g purescript spago parcel-bundler esbuild --unsafe-perm=true
 RUN sudo npm install -g bootstrap-icons
-
-# Install Docker
-RUN wget -O- https://download.docker.com/linux/debian/gpg | sudo apt-key add - \
-    && sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian buster stable" \
-    && sudo apt-get update \
-    && sudo apt-get -y install docker-ce docker-ce-cli containerd.io
